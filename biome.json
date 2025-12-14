@@ -1,0 +1,9 @@
+{
+  "files": {
+    "includes": ["**", "!**/.direnv", "!**/dist", "!**/node_modules"]
+  },
+
+  "formatter": {
+    "indentStyle": "space"
+  }
+}
