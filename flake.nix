@@ -1,0 +1,44 @@
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    flake-utils.url = "github:numtide/flake-utils";
+
+    nix-develop.url = "github:nicknovitski/nix-develop";
+    nix-develop.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs =
+    { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.google-cloud-sdk
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
+          ];
+        };
+
+        devShells.workflow = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
+          ];
+
+          shellHook = ''
+            pnpm install >/dev/null 2>&1
+          '';
+        };
+      }
+    );
+}

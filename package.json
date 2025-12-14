@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "name": "turma",
+  "dependencies": {
+    "@google-cloud/parametermanager": "^0.5.1",
+    "@google/genai": "^1.0.1",
+    "@octokit/app": "^16.0.1",
+    "@octokit/core": "^7.0.2",
+    "@types/node": "^22.15.21",
+    "google-auth-library": "^9.15.1",
+    "typescript": "^5.8.3"
+  }
+}
