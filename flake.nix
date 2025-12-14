@@ -24,6 +24,8 @@
 
       in
       {
+        packages.nix-develop = nix-develop.packages.${system}.default;
+
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.google-cloud-sdk
