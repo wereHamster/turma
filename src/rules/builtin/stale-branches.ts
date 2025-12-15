@@ -5,6 +5,12 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     const { octokit, repository } = ctx;
 
+    const { data: repoInfo } = await octokit.request("GET /repos/{owner}/{repo}", {
+      owner: repository.owner.login,
+      repo: repository.name,
+    });
+    const defaultBranch = repoInfo.default_branch;
+
     const branches = await octokit.request("GET /repos/{owner}/{repo}/branches", {
       owner: repository.owner.login,
       repo: repository.name,
@@ -19,6 +25,10 @@ const rule: Rule = {
     const staleBranches = (
       await Promise.all(
         branches.data.map(async (branch) => {
+          if (branch.name === defaultBranch) {
+            return [];
+          }
+
           const { data } = await octokit.request(branch.commit.url);
           return new Date(data.commit.author.date) < ninetyDaysAgo ? [branch] : [];
         }),
