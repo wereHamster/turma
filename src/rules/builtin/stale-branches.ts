@@ -20,7 +20,7 @@ const rule: Rule = {
       await Promise.all(
         branches.data.map(async (branch) => {
           const { data } = await octokit.request(branch.commit.url);
-          return new Date(data.commit.author.dat) < ninetyDaysAgo ? [branch] : [];
+          return new Date(data.commit.author.date) < ninetyDaysAgo ? [branch] : [];
         }),
       )
     ).flat();
