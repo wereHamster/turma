@@ -1,4 +1,5 @@
 packages:
   - "."
+  - "console"
 
 minimumReleaseAge: 12960

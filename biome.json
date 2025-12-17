@@ -1,6 +1,6 @@
 {
   "files": {
-    "includes": ["**", "!**/.direnv", "!**/dist", "!**/node_modules"]
+    "includes": ["**", "!**/.direnv", "!**/.next", "!**/dist", "!**/node_modules"]
   },
 
   "formatter": {
