@@ -16,11 +16,12 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     const { octokit, repository } = ctx;
 
-    const workflowFiles = await (async () => {
+    const treeEntries = await (async () => {
       try {
-        const { data } = await octokit.request("GET /repos/{owner}/{repo}/contents/.github/workflows", {
+        const { data } = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
           owner: repository.owner.login,
           repo: repository.name,
+          path: ".github/workflows",
         });
         return data;
       } catch (error) {
@@ -32,6 +33,14 @@ const rule: Rule = {
       }
     })();
 
+    if (!Array.isArray(treeEntries)) {
+      return;
+    }
+
+    const workflowFiles = treeEntries.filter((file) => file.type === "file");
+
+    const workflowsWithUnpinnedActions = new Set<string>();
+
     for (const file of workflowFiles) {
       const content = await readTextFile(ctx, `.github/workflows/${file.name}`);
 
@@ -42,15 +51,18 @@ const rule: Rule = {
             const comment = usesMatch[2];
 
             if (!comment || !comment.trim().startsWith("#")) {
-              addIssue(ctx, {
-                message: `Workflow ${file.name} uses unpinned actions`,
-              });
-
+              workflowsWithUnpinnedActions.add(file.name);
               return;
             }
           }
         }
       })();
+    }
+
+    if (workflowsWithUnpinnedActions.size > 0) {
+      addIssue(ctx, {
+        message: `Workflows use unpinned actions (${[...workflowsWithUnpinnedActions].join(", ")})`,
+      });
     }
   },
 };
