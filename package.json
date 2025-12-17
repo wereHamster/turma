@@ -2,6 +2,7 @@
   "type": "module",
   "name": "turma",
   "dependencies": {
+    "@google-cloud/firestore": "^8.0.0",
     "@google-cloud/parametermanager": "^0.5.1",
     "@google/genai": "^1.0.1",
     "@octokit/app": "^16.0.1",

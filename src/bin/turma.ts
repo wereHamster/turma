@@ -1,7 +1,16 @@
+import { FieldValue, Firestore } from "@google-cloud/firestore";
 import ansis from "ansis";
 import type { Issue } from "../lib/engine.js";
 import { app } from "../lib/github/app.js";
 import { allRules } from "../rules/index.js";
+
+const firestore = new Firestore({
+  databaseId: "default",
+});
+
+const run = await firestore.collection("runs").add({
+  createTime: FieldValue.serverTimestamp(),
+});
 
 for await (const { installation } of app.eachInstallation.iterator()) {
   const installationId = installation.id;
@@ -64,6 +73,19 @@ for await (const { installation } of app.eachInstallation.iterator()) {
 
       for (const issue of issues) {
         const { issueDescriptor } = issue;
+
+        await firestore.collection("issues").add({
+          runId: run.id,
+
+          createTime: FieldValue.serverTimestamp(),
+
+          installationId,
+          repositoryId: repository.id,
+
+          ruleId: issue.rule.id,
+
+          message: issueDescriptor.message,
+        });
 
         console.log(`Issue: ${ansis.red(`${issueDescriptor.message}`)}`);
         if (issueDescriptor.proposeResolution) {
