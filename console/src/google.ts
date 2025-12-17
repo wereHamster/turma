@@ -24,6 +24,11 @@ const authClient: undefined | AuthClient = (() => {
   );
 })();
 
-const firestore = new Firestore({ authClient, projectId: GCP_PROJECT_ID });
+const firestore = new Firestore({
+  databaseId: "default",
+
+  authClient,
+  projectId: GCP_PROJECT_ID,
+});
 
 export { firestore };
