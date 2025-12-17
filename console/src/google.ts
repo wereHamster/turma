@@ -12,6 +12,7 @@ const authClient: undefined | AuthClient = (() => {
 
   return (
     ExternalAccountClient.fromJSON({
+      projectId: GCP_PROJECT_ID,
       type: "external_account",
       audience: `//iam.googleapis.com/projects/${GCP_PROJECT_NUMBER}/locations/global/workloadIdentityPools/vercel/providers/vercel`,
       subject_token_type: "urn:ietf:params:oauth:token-type:jwt",
@@ -27,8 +28,20 @@ const authClient: undefined | AuthClient = (() => {
 const firestore = new Firestore({
   databaseId: "default",
 
-  authClient,
-  projectId: GCP_PROJECT_ID,
+  /*
+   * Connecting to Firestore with Workload Identity Federation is way too
+   * complicated.
+   *
+   * Also this not type safe!
+   */
+  ...(authClient && {
+    auth: {
+      getProjectId: async () => authClient.projectId,
+      getClient: () => authClient,
+      getUniverseDomain: () => "googleapis.com",
+      getRequestHeaders: (url?: string) => authClient.getRequestHeaders(url),
+    },
+  }),
 });
 
 export { firestore };
