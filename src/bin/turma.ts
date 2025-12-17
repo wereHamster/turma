@@ -85,6 +85,9 @@ for await (const { installation } of app.eachInstallation.iterator()) {
           repository: {
             id: repository.id,
             name: repository.name,
+            owner: {
+              login: repository.owner.login,
+            },
           },
 
           rule: {
