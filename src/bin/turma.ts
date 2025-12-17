@@ -75,14 +75,24 @@ for await (const { installation } of app.eachInstallation.iterator()) {
         const { issueDescriptor } = issue;
 
         await firestore.collection("issues").add({
-          runId: run.id,
-
           createTime: FieldValue.serverTimestamp(),
 
-          installationId,
-          repositoryId: repository.id,
+          run: {
+            id: run.id,
+          },
 
-          ruleId: issue.rule.id,
+          installation: {
+            id: installationId,
+          },
+
+          repository: {
+            id: repository.id,
+            name: repository.name,
+          },
+
+          rule: {
+            id: issue.rule.id,
+          },
 
           message: issueDescriptor.message,
         });
