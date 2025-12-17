@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vercel/functions": "^3.3.4",
     "next": "^16.0.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
