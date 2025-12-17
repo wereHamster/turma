@@ -54,8 +54,12 @@ You need to enable certain Google Cloud APIs.
 The list below may be incomplete.
 If the app fails due to an API not being enabled, the error message should tell you which one.
 
-- [Parameter Manager](https://console.cloud.google.com/apis/api/parametermanager.googleapis.com/metrics)
-- [Vertex AI](https://console.cloud.google.com/apis/api/aiplatform.googleapis.com/metrics)
+- [Firestore](https://console.cloud.google.com/apis/library/firestore.googleapis.com)
+- [Parameter Manager](https://console.cloud.google.com/apis/library/parametermanager.googleapis.com)
+- [Vertex AI](https://console.cloud.google.com/apis/library/aiplatform.googleapis.com)
+
+Then create a Firestore database with the name "default".
+Select "Enterprise Edition" and pick a location that's closest to where the app will run.
 
 ### 3. Configure
 
