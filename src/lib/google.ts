@@ -1,4 +1,4 @@
-import { FieldValue, Firestore } from "@google-cloud/firestore";
+import { Firestore } from "@google-cloud/firestore";
 import { ParameterManagerClient } from "@google-cloud/parametermanager";
 import { GoogleAuth } from "google-auth-library";
 
