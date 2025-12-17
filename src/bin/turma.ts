@@ -1,12 +1,9 @@
-import { FieldValue, Firestore } from "@google-cloud/firestore";
+import { FieldValue } from "@google-cloud/firestore";
 import ansis from "ansis";
 import type { Issue } from "../lib/engine.js";
 import { app } from "../lib/github/app.js";
+import { firestore } from "../lib/google.js";
 import { allRules } from "../rules/index.js";
-
-const firestore = new Firestore({
-  databaseId: "default",
-});
 
 const run = await firestore.collection("runs").add({
   createTime: FieldValue.serverTimestamp(),

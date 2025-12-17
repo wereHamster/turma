@@ -1,3 +1,4 @@
+import { FieldValue, Firestore } from "@google-cloud/firestore";
 import { ParameterManagerClient } from "@google-cloud/parametermanager";
 import { GoogleAuth } from "google-auth-library";
 
@@ -8,4 +9,8 @@ console.log(`Connected to Google Cloud Project "${project}"`);
 
 const parameterManagerClient = new ParameterManagerClient();
 
-export { auth, project, parameterManagerClient };
+const firestore = new Firestore({
+  databaseId: "default",
+});
+
+export { auth, project, parameterManagerClient, firestore };
