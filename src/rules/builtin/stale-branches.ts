@@ -37,7 +37,13 @@ const rule: Rule = {
 
     if (staleBranches.length > 0) {
       addIssue(ctx, {
-        message: `Stale branches (${staleBranches.map((b) => b.name).join(", ")})`,
+        title: "Stale branches",
+        description: `The repository contains branches that have not been updated in 90 days.
+
+The following branches are considered stale:
+
+${staleBranches.map((b) => ` - ${b.name}`).join("\n")}
+`,
       });
     }
   },

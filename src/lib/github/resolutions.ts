@@ -79,7 +79,7 @@ export async function proposeTextFileResolution(ctx: Context, issue: Issue, { br
       title: `Create ${filePath}`,
       head: branchName,
       base: defaultBranch,
-      body: `This is an automated pull request to resolve issue "${issue.issueDescriptor.message}".`,
+      body: `This is an automated pull request to resolve issue "${issue.issueDescriptor.title}".`,
     });
     console.log(`  ✓ Created PR for ${branchName} in ${repository.owner.login}/${repository.name}`);
   }

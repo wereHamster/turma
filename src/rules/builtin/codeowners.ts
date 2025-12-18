@@ -7,7 +7,7 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     if (!(await fileExists(ctx, ".github/CODEOWNERS"))) {
       await addIssue(ctx, {
-        message: ".github/CODEOWNERS does not exist",
+        title: ".github/CODEOWNERS does not exist",
 
         proposeResolution: async (ctx, issue) => {
           await proposeTextFileResolution(ctx, issue, {

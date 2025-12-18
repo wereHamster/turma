@@ -35,7 +35,29 @@ export interface Rule {
 }
 
 export interface IssueDescriptor {
-  readonly message: string;
+  /**
+   * A short title for the issue.
+   *
+   * The title should uniquely identify the issue (think of it as a human
+   * readable Issue ID). It should not contain violation-specific details.
+   * Those go into the description.
+   *
+   * Example: "Repository is missing a LICENSE file"
+   */
+  readonly title: string;
+
+  /**
+   * A longer, more detailed description of the issue. This should contain
+   * specific details about the rule violation to help users understand
+   * the issue.
+   *
+   * The decription is interpreted as markdown. It can contain the following
+   * block and inline elements:
+   *
+   *  - Block: paragraph, list
+   *  - Inline: bold, italic, link
+   */
+  readonly description?: string;
 
   readonly proposeResolution?: (ctx: Context, issue: Issue) => Promise<void>;
 }

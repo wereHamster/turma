@@ -61,7 +61,7 @@ const rule: Rule = {
 
     if (workflowsWithUnpinnedActions.size > 0) {
       addIssue(ctx, {
-        message: `Workflows use unpinned actions (${[...workflowsWithUnpinnedActions].join(", ")})`,
+        title: `Workflows use unpinned actions (${[...workflowsWithUnpinnedActions].join(", ")})`,
       });
     }
   },

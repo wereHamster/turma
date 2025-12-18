@@ -6,7 +6,7 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     if (!(await fileExists(ctx, "README.md"))) {
       await addIssue(ctx, {
-        message: "README.md does not exist",
+        title: "README.md does not exist",
       });
     }
   },
