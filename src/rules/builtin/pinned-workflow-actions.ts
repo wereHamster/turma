@@ -61,6 +61,7 @@ const rule: Rule = {
 
     if (workflowsWithUnpinnedActions.size > 0) {
       addIssue(ctx, {
+        priority: 1,
         title: `Workflows use unpinned actions`,
 
         description: `The repository contains GitHub workflow files that use actions without pinning them to a specific commit hash.

@@ -6,6 +6,7 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     if (!(await fileExists(ctx, "README.md"))) {
       await addIssue(ctx, {
+        priority: 2,
         title: "README.md does not exist",
 
         description: `The repository does not contain a \`README.md\` file in its root directory.`,

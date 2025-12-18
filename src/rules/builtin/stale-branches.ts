@@ -37,7 +37,9 @@ const rule: Rule = {
 
     if (staleBranches.length > 0) {
       addIssue(ctx, {
+        priority: 4,
         title: "Stale branches",
+
         description: `The repository contains branches that have not been updated in 90 days.
 
 The following branches are considered stale:

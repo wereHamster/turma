@@ -52,6 +52,7 @@ async function Run(props: { run: QueryDocumentSnapshot }) {
               {issues.map((issue) => {
                 return (
                   <div key={issue.id} style={{ marginLeft: "2rem" }}>
+                    <div>Priority: {issue.data().issueDecriptor.priority}</div>
                     <h4>Issue: {issue.data().issueDecriptor.title}</h4>
 
                     {issue.data().issueDecriptor.description && (

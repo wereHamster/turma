@@ -95,6 +95,7 @@ for await (const { installation } of app.eachInstallation.iterator()) {
           },
 
           issueDecriptor: {
+            priority: issueDescriptor.priority,
             title: issueDescriptor.title,
             description: issueDescriptor.description ?? null,
             remediation: issueDescriptor.remediation ?? null,

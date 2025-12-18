@@ -7,6 +7,7 @@ const rule: Rule = {
   fn: async (ctx: Context) => {
     if (!(await fileExists(ctx, ".github/CODEOWNERS"))) {
       await addIssue(ctx, {
+        priority: 2,
         title: ".github/CODEOWNERS does not exist",
 
         description: `The repository does not document code ownership in a machine-readable way.`,
