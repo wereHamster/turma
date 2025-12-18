@@ -38,10 +38,12 @@ export interface IssueDescriptor {
   /**
    * The priority of the issue.
    *
-   *  - 0 means no explicit priority, or
-   *  - 1 (urgent) to 4 (lowest)
+   *  - 1 (urgent) through 4 (lowest), or
+   *  - 5 if no priority is assigned
+   *
+   * The values are picked so that issues can be sorted by the priority easily.
    */
-  readonly priority: 0 | 1 | 2 | 3 | 4;
+  readonly priority: 1 | 2 | 3 | 4 | 5;
 
   /**
    * A short title for the issue.
