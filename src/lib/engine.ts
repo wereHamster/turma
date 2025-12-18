@@ -36,6 +36,14 @@ export interface Rule {
 
 export interface IssueDescriptor {
   /**
+   * The priority of the issue.
+   *
+   *  - 0 means no explicit priority, or
+   *  - 1 (urgent) to 4 (lowest)
+   */
+  readonly priority: 0 | 1 | 2 | 3 | 4;
+
+  /**
    * A short title for the issue.
    *
    * The title should uniquely identify the issue (think of it as a human
