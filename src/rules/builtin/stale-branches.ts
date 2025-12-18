@@ -37,7 +37,15 @@ const rule: Rule = {
 
     if (staleBranches.length > 0) {
       addIssue(ctx, {
-        message: `Stale branches (${staleBranches.map((b) => b.name).join(", ")})`,
+        title: "Stale branches",
+        description: `The repository contains branches that have not been updated in 90 days.
+
+The following branches are considered stale:
+
+${staleBranches.map((b) => ` - ${b.name}`).join("\n")}
+`,
+
+        remediation: `Delete branches that are no longer needed, merge pull requests if they are ready and approved, or continue working on the branch to bring the change to completion.`,
       });
     }
   },

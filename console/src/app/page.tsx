@@ -52,7 +52,21 @@ async function Run(props: { run: QueryDocumentSnapshot }) {
               {issues.map((issue) => {
                 return (
                   <div key={issue.id} style={{ marginLeft: "2rem" }}>
-                    <h4>Issue: {issue.data().message}</h4>
+                    <h4>Issue: {issue.data().issueDecriptor.title}</h4>
+
+                    {issue.data().issueDecriptor.description && (
+                      <>
+                        <h5>Description:</h5>
+                        <pre style={{ maxWidth: 500 }}>{issue.data().issueDecriptor.description}</pre>
+                      </>
+                    )}
+
+                    {issue.data().issueDecriptor.remediation && (
+                      <>
+                        <h5>Remediation:</h5>
+                        <pre style={{ maxWidth: 500 }}>{issue.data().issueDecriptor.remediation}</pre>
+                      </>
+                    )}
                   </div>
                 );
               })}

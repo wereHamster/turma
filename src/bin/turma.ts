@@ -94,10 +94,14 @@ for await (const { installation } of app.eachInstallation.iterator()) {
             id: issue.rule.id,
           },
 
-          message: issueDescriptor.message,
+          issueDecriptor: {
+            title: issueDescriptor.title,
+            description: issueDescriptor.description ?? null,
+            remediation: issueDescriptor.remediation ?? null,
+          },
         });
 
-        console.log(`Issue: ${ansis.red(`${issueDescriptor.message}`)}`);
+        console.log(`Issue: ${ansis.red(`${issueDescriptor.title}`)}`);
         if (issueDescriptor.proposeResolution) {
           console.log(`  Automatic Resolution Available: ${ansis.green("Yes")}`);
         }

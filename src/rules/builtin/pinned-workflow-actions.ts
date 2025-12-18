@@ -61,7 +61,22 @@ const rule: Rule = {
 
     if (workflowsWithUnpinnedActions.size > 0) {
       addIssue(ctx, {
-        message: `Workflows use unpinned actions (${[...workflowsWithUnpinnedActions].join(", ")})`,
+        title: `Workflows use unpinned actions`,
+
+        description: `The repository contains GitHub workflow files that use actions without pinning them to a specific commit hash.
+
+The following workflow files use unpinned actions:
+
+${[...workflowsWithUnpinnedActions].map((f) => ` - ${f}`).join("\n")}
+`,
+
+        remediation: `Update the workflow files to pin all actions to specific commit hashes. This can be done by adding a comment with the tag at the end of the line where the action is used. For example:
+
+\`\`\`yaml
+- uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+\`\`\`
+
+Pinning actions helps ensure that your workflows are not affected by changes in the action's codebase, improving security and stability.`,
       });
     }
   },
