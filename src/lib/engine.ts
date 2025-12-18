@@ -49,7 +49,7 @@ export interface IssueDescriptor {
   /**
    * A longer, more detailed description of the issue. This should contain
    * specific details about the rule violation to help users understand
-   * the issue.
+   * the issue and how it impacts the repository.
    *
    * The decription is interpreted as markdown. It can contain the following
    * block and inline elements:
@@ -58,6 +58,18 @@ export interface IssueDescriptor {
    *  - Inline: bold, italic, link
    */
   readonly description?: string;
+
+  /**
+   * Guidance on how to resolve the issue. Should provide concrete steps what
+   * to do, specific to the issue at hand.
+   *
+   * The remediation is interpreted as markdown. It can contain the following
+   * block and inline elements:
+   *
+   *  - Block: paragraph, list
+   *  - Inline: bold, italic, link
+   */
+  readonly remediation?: string;
 
   readonly proposeResolution?: (ctx: Context, issue: Issue) => Promise<void>;
 }

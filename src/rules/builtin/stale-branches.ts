@@ -44,6 +44,8 @@ The following branches are considered stale:
 
 ${staleBranches.map((b) => ` - ${b.name}`).join("\n")}
 `,
+
+        remediation: `Delete branches that are no longer needed, merge pull requests if they are ready and approved, or continue working on the branch to bring the change to completion.`,
       });
     }
   },

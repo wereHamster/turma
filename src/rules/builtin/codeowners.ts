@@ -9,6 +9,10 @@ const rule: Rule = {
       await addIssue(ctx, {
         title: ".github/CODEOWNERS does not exist",
 
+        description: `The repository does not document code ownership in a machine-readable way.`,
+
+        remediation: `Create a \`.github/CODEOWNERS\` file in the repository to document code ownership. At a minimum, the file should specify the repository owner as the code owner for all files in the repository.`,
+
         proposeResolution: async (ctx, issue) => {
           await proposeTextFileResolution(ctx, issue, {
             branchName: `turma/${issue.rule.id}`,

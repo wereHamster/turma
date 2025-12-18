@@ -97,6 +97,7 @@ for await (const { installation } of app.eachInstallation.iterator()) {
           issueDecriptor: {
             title: issueDescriptor.title,
             description: issueDescriptor.description ?? null,
+            remediation: issueDescriptor.remediation ?? null,
           },
         });
 
