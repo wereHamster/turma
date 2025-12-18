@@ -38,6 +38,9 @@ importers:
 
   console:
     dependencies:
+      '@biscuit-auth/biscuit-wasm':
+        specifier: ^0.6.0
+        version: 0.6.0
       '@vercel/functions':
         specifier: ^3.3.4
         version: 3.3.4
@@ -59,6 +62,10 @@ importers:
         version: 19.2.7
 
 packages:
+
+  '@biscuit-auth/biscuit-wasm@0.6.0':
+    resolution: {integrity: sha512-QM4rZU+f/WI1tr2vPMCErrGXrJdfK4mTiY1m/JyR1eIiOIJOzoHUHf3Z+hE2a1+Dt9vm6wgGyJg89S871JN7BQ==}
+    engines: {node: '>=22.0.0'}
 
   '@emnapi/runtime@1.7.1':
     resolution: {integrity: sha512-PVtJr5CmLwYAU9PZDMITZoR5iAOShYREoR45EyyLrbntV50mdePTgUn4AmOw90Ifcj+x2kRjdzr1HP3RrNiHGA==}
@@ -1258,6 +1265,8 @@ packages:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
 snapshots:
+
+  '@biscuit-auth/biscuit-wasm@0.6.0': {}
 
   '@emnapi/runtime@1.7.1':
     dependencies:
