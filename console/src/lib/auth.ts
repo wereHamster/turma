@@ -3,7 +3,7 @@ import type { NextRequest, NextResponse } from "next/server";
 
 const sessionTokenCookieName = "__Host-STKN";
 
-export async function attachSessionToken(res: NextResponse, input: SeessionTokenInput) {
+export async function attachSessionToken(res: NextResponse, input: SessionTokenInput) {
   const sessionToken = await createSessionToken(input);
 
   res.cookies.set(sessionTokenCookieName, sessionToken, {
@@ -28,7 +28,8 @@ export async function authorizeRequest(req: NextRequest): Promise<"UNAUTHENTICAT
  * Biscuit private and public keys. These are used to sign and verify
  * session tokens.
  *
- * The keys are optional. When not provided, we
+ * The keys are optional. When not provided, the functions that need them
+ * will throw an error.
  */
 const { privateKey, publicKey } = (() => {
   const privateKeyString = process.env.BISCUIT_PRIVATE_KEY;
@@ -52,14 +53,14 @@ const { privateKey, publicKey } = (() => {
  */
 type SessionToken = string;
 
-export interface SeessionTokenInput {
+export interface SessionTokenInput {
   /**
    * The GitHub login of the user.
    */
   login: string;
 }
 
-async function createSessionToken(payload: SeessionTokenInput): Promise<SessionToken> {
+async function createSessionToken(payload: SessionTokenInput): Promise<SessionToken> {
   if (!privateKey) {
     throw new Error("Biscuit keys not configured");
   }
@@ -78,7 +79,11 @@ async function verifySessionToken(sessionToken: SessionToken): Promise<"UNAUTHEN
     throw new Error("Biscuit keys not configured");
   }
 
-  const biscuit = Biscuit.fromBase64(sessionToken, publicKey);
+  let biscuit: Biscuit;
+  try {
+    biscuit = Biscuit.fromBase64(sessionToken, publicKey);
+  } catch {}
+
   if (!biscuit) {
     return "UNAUTHENTICATED";
   }

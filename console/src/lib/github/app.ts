@@ -5,13 +5,11 @@
  * provided via environment variables.
  */
 
-const appOptions = await (async () => {
-  return {
-    oauth: {
-      clientId: process.env.GITHUB_OAUTH_CLIENT_ID,
-      clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-    },
-  };
-})();
+const appOptions = {
+  oauth: {
+    clientId: process.env.GITHUB_OAUTH_CLIENT_ID,
+    clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
+  },
+};
 
 export { appOptions };

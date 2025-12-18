@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   res.cookies.set("state", "", { path: "/", maxAge: 0 });
 
-  attachSessionToken(res, { login });
+  await attachSessionToken(res, { login });
 
   return res;
 }
