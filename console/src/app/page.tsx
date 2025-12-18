@@ -1,5 +1,5 @@
 import type { QueryDocumentSnapshot } from "@google-cloud/firestore";
-import { firestore } from "../google";
+import { firestore } from "../lib/google";
 
 export default async function Page() {
   const runsQuerySnapshot = await firestore.collection("runs").orderBy("createTime", "desc").limit(1).get();
