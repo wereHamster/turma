@@ -1,4 +1,9 @@
 import type { QueryDocumentSnapshot } from "@google-cloud/firestore";
+import * as prod from "react/jsx-runtime";
+import rehypeReact from "rehype-react";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 import { firestore } from "../lib/google";
 
 export default async function Page() {
@@ -58,14 +63,18 @@ async function Run(props: { run: QueryDocumentSnapshot }) {
                     {issue.data().issueDecriptor.description && (
                       <>
                         <h5>Description:</h5>
-                        <pre style={{ maxWidth: 500 }}>{issue.data().issueDecriptor.description}</pre>
+                        <div style={{ maxWidth: 500 }}>
+                          <Markdown content={issue.data().issueDecriptor.description} />
+                        </div>
                       </>
                     )}
 
                     {issue.data().issueDecriptor.remediation && (
                       <>
                         <h5>Remediation:</h5>
-                        <pre style={{ maxWidth: 500 }}>{issue.data().issueDecriptor.remediation}</pre>
+                        <div style={{ maxWidth: 500 }}>
+                          <Markdown content={issue.data().issueDecriptor.remediation} />
+                        </div>
                       </>
                     )}
                   </div>
@@ -77,4 +86,21 @@ async function Run(props: { run: QueryDocumentSnapshot }) {
       </div>
     </div>
   );
+}
+
+async function Markdown(props: { content: string }) {
+  const { content } = props;
+
+  const processor = unified().use(remarkParse).use(remarkRehype).use(rehypeReact, {
+    Fragment: prod.Fragment,
+    jsx: prod.jsx,
+    jsxs: prod.jsxs,
+    components: {
+      // p: (props) => <p {...props} />,
+    },
+  });
+
+  const file = await processor.process(content);
+
+  return <div className="markdown-body">{file.result}</div>;
 }
