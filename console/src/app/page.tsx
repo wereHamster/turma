@@ -88,19 +88,19 @@ async function Run(props: { run: QueryDocumentSnapshot }) {
   );
 }
 
+const markdownProcessor = unified().use(remarkParse).use(remarkRehype).use(rehypeReact, {
+  Fragment: prod.Fragment,
+  jsx: prod.jsx,
+  jsxs: prod.jsxs,
+  components: {
+    // p: (props) => <p {...props} />,
+  },
+});
+
 async function Markdown(props: { content: string }) {
   const { content } = props;
 
-  const processor = unified().use(remarkParse).use(remarkRehype).use(rehypeReact, {
-    Fragment: prod.Fragment,
-    jsx: prod.jsx,
-    jsxs: prod.jsxs,
-    components: {
-      // p: (props) => <p {...props} />,
-    },
-  });
-
-  const file = await processor.process(content);
+  const file = await markdownProcessor.process(content);
 
   return <div className="markdown-body">{file.result}</div>;
 }
