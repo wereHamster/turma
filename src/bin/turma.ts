@@ -104,7 +104,16 @@ for await (const { installation } of app.eachInstallation.iterator()) {
 
         console.log(`Issue: ${ansis.red(`${issueDescriptor.title}`)}`);
         if (issueDescriptor.proposeResolution) {
-          console.log(`  Automatic Resolution Available: ${ansis.green("Yes")}`);
+          if (!process.env.WRITE) {
+            console.log(`  Automatic Resolution: ${ansis.yellow("Available")}`);
+          } else {
+            try {
+              await issueDescriptor.proposeResolution({ octokit, repository, rule: issue.rule, issues }, issue);
+              console.log(`  Automatic Resolution: ${ansis.green("Proposed")}`);
+            } catch {
+              console.log(`  Automatic Resolution: ${ansis.red("Failed")}`);
+            }
+          }
         }
         console.log();
       }
