@@ -29,14 +29,14 @@ const rule: Rule = {
 
         description: `Node.js projects should define a pnpm workspace and set a minimumReleaseAge.`,
 
-        remediation: `Create a \`pnpm-workspace.yaml\` file and set minimumReleaseAge to at least 9 days (12960 minutes).`,
+        remediation: `Create a \`pnpm-workspace.yaml\` file and set minimumReleaseAge to at least 15 days (21600 minutes).`,
 
         proposeResolution: async (ctx, issue) => {
           await proposeTextFileResolution(ctx, issue, {
             branchName: `turma/${issue.rule.id}-workspace`,
 
             filePath: "pnpm-workspace.yaml",
-            content: "packages:\n  - '.'\n\nminimumReleaseAge: 12960\n",
+            content: "packages:\n  - '.'\n\nminimumReleaseAge: 21600\n",
           });
         },
       });
@@ -53,14 +53,14 @@ const rule: Rule = {
 
         description: `Node.js projects should define a minimumReleaseAge in their pnpm workspace.`,
 
-        remediation: `Add minimumReleaseAge to the \`pnpm-workspace.yaml\` file and set it to at least 9 days (12960 minutes).`,
+        remediation: `Add minimumReleaseAge to the \`pnpm-workspace.yaml\` file and set it to at least 15 days (21600 minutes).`,
 
         proposeResolution: async (ctx, issue) => {
           await proposeTextFileResolution(ctx, issue, {
             branchName: `turma/${issue.rule.id}-set-minimum-release-age`,
 
             filePath: "pnpm-workspace.yaml",
-            content: `${contents}\nminimumReleaseAge: 12960\n`,
+            content: `${contents}\nminimumReleaseAge: 21600\n`,
           });
         },
       });
@@ -69,21 +69,21 @@ const rule: Rule = {
     }
 
     const minimumReleaseAge = parseInt(minimumReleaseAgeMatch[1], 10);
-    if (minimumReleaseAge < 12960) {
+    if (minimumReleaseAge < 21600) {
       await addIssue(ctx, {
         priority: 3,
         title: "Pnpm workspace has low minimumReleaseAge",
 
-        description: `Node.js projects should set a minimumReleaseAge of at least 9 days (12960 minutes) in their pnpm workspace. The current setting is ${minimumReleaseAge} minutes.`,
+        description: `Node.js projects should set a minimumReleaseAge of at least 15 days (21600 minutes) in their pnpm workspace. The current setting is ${minimumReleaseAge} minutes.`,
 
-        remediation: `Increase minimumReleaseAge in the \`pnpm-workspace.yaml\` file to at least 12960.`,
+        remediation: `Increase minimumReleaseAge in the \`pnpm-workspace.yaml\` file to at least 21600.`,
 
         proposeResolution: async (ctx, issue) => {
           await proposeTextFileResolution(ctx, issue, {
             branchName: `turma/${issue.rule.id}-increase-minimum-release-age`,
 
             filePath: "pnpm-workspace.yaml",
-            content: contents.replace(/minimumReleaseAge:\s*\d+/, "minimumReleaseAge: 12960"),
+            content: contents.replace(/minimumReleaseAge:\s*\d+/, "minimumReleaseAge: 21600"),
           });
         },
       });
