@@ -41,6 +41,10 @@
             pkgs.pnpm
             pkgs.biome
           ];
+
+          shellHook = ''
+            pnpm install
+          '';
         };
       }
     );
