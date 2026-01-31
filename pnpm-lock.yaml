@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@google-cloud/firestore':
         specifier: ^8.0.0
-        version: 8.0.0
+        version: 8.2.0
       '@google-cloud/parametermanager':
         specifier: ^0.5.1
         version: 0.5.1
@@ -81,8 +81,8 @@ packages:
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
 
-  '@google-cloud/firestore@8.0.0':
-    resolution: {integrity: sha512-Qy6YAkDxWRBMYE+eMEnvq6q8wnmzGvSdenlcqMvGhJHDDxJuyGJex5oDX2HgU0H7q9I9XCI50kErkP8qsfc7Gg==}
+  '@google-cloud/firestore@8.2.0':
+    resolution: {integrity: sha512-dhpoNT+CcpHCiukuJPjGKH//WCicWPAPE5plOOQxDSGOzLuDzhOA7MNS+n69kA1FekHCpXKSPpSaCySz4t5ftQ==}
     engines: {node: '>=18'}
 
   '@google-cloud/parametermanager@0.5.1':
@@ -946,6 +946,9 @@ packages:
   jws@4.0.0:
     resolution: {integrity: sha512-KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==}
 
+  jws@4.0.1:
+    resolution: {integrity: sha512-EKI/M/yqPncGUUh44xz0PxSidXFr/+r0pA70+gIYhjv+et7yxM+s29Y+VGDkovRofQem0fs7Uvf4+YmAdyRduA==}
+
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
@@ -1524,7 +1527,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@google-cloud/firestore@8.0.0':
+  '@google-cloud/firestore@8.2.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
       fast-deep-equal: 3.1.3
@@ -1923,7 +1926,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.4.1
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2271,7 +2274,7 @@ snapshots:
       gcp-metadata: 8.1.2
       google-logging-utils: 1.1.3
       gtoken: 8.0.0
-      jws: 4.0.0
+      jws: 4.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -2320,7 +2323,7 @@ snapshots:
   gtoken@8.0.0:
     dependencies:
       gaxios: 7.1.3
-      jws: 4.0.0
+      jws: 4.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -2366,14 +2369,14 @@ snapshots:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.4.1
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.4.1
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2434,6 +2437,11 @@ snapshots:
       safe-buffer: 5.2.1
 
   jws@4.0.0:
+    dependencies:
+      jwa: 2.0.1
+      safe-buffer: 5.2.1
+
+  jws@4.0.1:
     dependencies:
       jwa: 2.0.1
       safe-buffer: 5.2.1
