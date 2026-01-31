@@ -41,6 +41,9 @@ importers:
       '@biscuit-auth/biscuit-wasm':
         specifier: ^0.6.0
         version: 0.6.0
+      '@types/react':
+        specifier: 19.2.7
+        version: 19.2.7
       '@vercel/functions':
         specifier: ^3.3.4
         version: 3.3.6
@@ -68,10 +71,6 @@ importers:
       unified:
         specifier: ^11.0.5
         version: 11.0.5
-    devDependencies:
-      '@types/react':
-        specifier: 19.2.7
-        version: 19.2.7
 
 packages:
 
