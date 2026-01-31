@@ -27,7 +27,7 @@
         packages.nix-develop = nix-develop.packages.${system}.default;
 
         devShells.default = pkgs.mkShell {
-          buildInputs = [
+          nativeBuildInputs = [
             pkgs.google-cloud-sdk
             pkgs.nodejs
             pkgs.pnpm
@@ -36,15 +36,11 @@
         };
 
         devShells.workflow = pkgs.mkShell {
-          buildInputs = [
+          nativeBuildInputs = [
             pkgs.nodejs
             pkgs.pnpm
             pkgs.biome
           ];
-
-          shellHook = ''
-            pnpm install >/dev/null 2>&1
-          '';
         };
       }
     );
