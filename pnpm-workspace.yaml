@@ -2,4 +2,4 @@ packages:
   - "."
   - "console"
 
-minimumReleaseAge: 7200 # 12960
+minimumReleaseAge: 21600
