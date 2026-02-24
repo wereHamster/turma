@@ -1,6 +1,7 @@
 import builtinBiomeRule from "./builtin/biome.js";
 import builtinCodeownersRule from "./builtin/codeowners.js";
 import builtinDefaultBranchRule from "./builtin/default-branch.js";
+import builtinDirenvRule from "./builtin/direnv.js";
 import builtinPinnedWorkflowActionsRule from "./builtin/pinned-workflow-actions.js";
 import builtinPnpmRule from "./builtin/pnpm.js";
 import builtinReadmeRule from "./builtin/readme.js";
@@ -10,6 +11,7 @@ const builtinRules = [
   builtinBiomeRule,
   builtinCodeownersRule,
   builtinDefaultBranchRule,
+  builtinDirenvRule,
   builtinPinnedWorkflowActionsRule,
   builtinPnpmRule,
   builtinReadmeRule,
