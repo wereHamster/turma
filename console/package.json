@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@biscuit-auth/biscuit-wasm": "^0.6.0",
     "@vercel/functions": "^3.3.4",
     "next": "^16.0.10",
