@@ -134,7 +134,7 @@ const rule: Rule = {
                 branchName: `turma/${issue.rule.id}-set-trust-policy`,
 
                 filePath: "pnpm-workspace.yaml",
-                content: contents.replace(/trustPolicy:\s*\d+/, "trustPolicy: 12960"),
+                content: contents.replace(/^(\s*trustPolicy\s*:\s*)(["']?).*$/m, "$1$2no-downgrade$2"),
               });
             },
           });
