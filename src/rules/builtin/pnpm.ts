@@ -111,7 +111,7 @@ const rule: Rule = {
                 branchName: `turma/${issue.rule.id}-set-trust-policy`,
 
                 filePath: "pnpm-workspace.yaml",
-                content: `${contents}\trustPolicy: no-downgrade\n`,
+                content: `${contents}\ntrustPolicy: no-downgrade\n`,
               });
             },
           });
