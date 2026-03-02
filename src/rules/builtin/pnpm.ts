@@ -36,7 +36,7 @@ const rule: Rule = {
             branchName: `turma/${issue.rule.id}-workspace`,
 
             filePath: "pnpm-workspace.yaml",
-            content: "packages:\n  - '.'\n\nminimumReleaseAge: 12960\n",
+            content: "packages:\n  - '.'\n\nminimumReleaseAge: 12960\ntrustPolicy: no-downgrade\n",
           });
         },
       });
