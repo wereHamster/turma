@@ -125,7 +125,7 @@ const rule: Rule = {
             priority: 3,
             title: "Pnpm workspace has wrong trustPolicy",
 
-            description: `Node.js projects should set trustPolicy to "no-downgrade". The current setting is "${trustPolicy}"" minutes.`,
+            description: `Node.js projects should set trustPolicy to "no-downgrade". The current setting is "${trustPolicy}".`,
 
             remediation: `Set trustPolicy in the \`pnpm-workspace.yaml\` file to "no-downgrade".`,
 
