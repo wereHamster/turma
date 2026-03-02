@@ -45,49 +45,102 @@ const rule: Rule = {
     }
 
     const contents = await readTextFile(ctx, "pnpm-workspace.yaml");
-    const minimumReleaseAgeMatch = /minimumReleaseAge:\s*(\d+)/.exec(contents);
-    if (!minimumReleaseAgeMatch) {
-      await addIssue(ctx, {
-        priority: 3,
-        title: "Pnpm workspace does not define minimumReleaseAge",
 
-        description: `Node.js projects should define a minimumReleaseAge in their pnpm workspace.`,
+    await Promise.all([
+      // minimumReleaseAge
+      (async () => {
+        const minimumReleaseAgeMatch = /minimumReleaseAge:\s*(\d+)/.exec(contents);
+        if (!minimumReleaseAgeMatch) {
+          await addIssue(ctx, {
+            priority: 3,
+            title: "Pnpm workspace does not define minimumReleaseAge",
 
-        remediation: `Add minimumReleaseAge to the \`pnpm-workspace.yaml\` file and set it to at least 9 days (12960 minutes).`,
+            description: `Node.js projects should define a minimumReleaseAge in their pnpm workspace.`,
 
-        proposeResolution: async (ctx, issue) => {
-          await proposeTextFileResolution(ctx, issue, {
-            branchName: `turma/${issue.rule.id}-set-minimum-release-age`,
+            remediation: `Add minimumReleaseAge to the \`pnpm-workspace.yaml\` file and set it to at least 9 days (12960 minutes).`,
 
-            filePath: "pnpm-workspace.yaml",
-            content: `${contents}\nminimumReleaseAge: 12960\n`,
+            proposeResolution: async (ctx, issue) => {
+              await proposeTextFileResolution(ctx, issue, {
+                branchName: `turma/${issue.rule.id}-set-minimum-release-age`,
+
+                filePath: "pnpm-workspace.yaml",
+                content: `${contents}\nminimumReleaseAge: 12960\n`,
+              });
+            },
           });
-        },
-      });
 
-      return;
-    }
+          return;
+        }
 
-    const minimumReleaseAge = parseInt(minimumReleaseAgeMatch[1], 10);
-    if (minimumReleaseAge < 12960) {
-      await addIssue(ctx, {
-        priority: 3,
-        title: "Pnpm workspace has low minimumReleaseAge",
+        const minimumReleaseAge = parseInt(minimumReleaseAgeMatch[1], 10);
+        if (minimumReleaseAge < 12960) {
+          await addIssue(ctx, {
+            priority: 3,
+            title: "Pnpm workspace has low minimumReleaseAge",
 
-        description: `Node.js projects should set a minimumReleaseAge of at least 9 days (12960 minutes) in their pnpm workspace. The current setting is ${minimumReleaseAge} minutes.`,
+            description: `Node.js projects should set a minimumReleaseAge of at least 9 days (12960 minutes) in their pnpm workspace. The current setting is ${minimumReleaseAge} minutes.`,
 
-        remediation: `Increase minimumReleaseAge in the \`pnpm-workspace.yaml\` file to at least 12960.`,
+            remediation: `Increase minimumReleaseAge in the \`pnpm-workspace.yaml\` file to at least 12960.`,
 
-        proposeResolution: async (ctx, issue) => {
-          await proposeTextFileResolution(ctx, issue, {
-            branchName: `turma/${issue.rule.id}-increase-minimum-release-age`,
+            proposeResolution: async (ctx, issue) => {
+              await proposeTextFileResolution(ctx, issue, {
+                branchName: `turma/${issue.rule.id}-increase-minimum-release-age`,
 
-            filePath: "pnpm-workspace.yaml",
-            content: contents.replace(/minimumReleaseAge:\s*\d+/, "minimumReleaseAge: 12960"),
+                filePath: "pnpm-workspace.yaml",
+                content: contents.replace(/minimumReleaseAge:\s*\d+/, "minimumReleaseAge: 12960"),
+              });
+            },
           });
-        },
-      });
-    }
+        }
+      })(),
+
+      // trustPolicy
+      (async () => {
+        const trustPolicyMatch = /trustPolicy:\s*(.+)/.exec(contents);
+        if (!trustPolicyMatch) {
+          await addIssue(ctx, {
+            priority: 3,
+            title: "Pnpm workspace does not define trustPolicy",
+
+            description: `Node.js projects should define a trustPolicy in their pnpm workspace.`,
+
+            remediation: `Add trustPolicy to the \`pnpm-workspace.yaml\` file and set it to "no-downgrade".`,
+
+            proposeResolution: async (ctx, issue) => {
+              await proposeTextFileResolution(ctx, issue, {
+                branchName: `turma/${issue.rule.id}-set-trust-policy`,
+
+                filePath: "pnpm-workspace.yaml",
+                content: `${contents}\trustPolicy: no-downgrade\n`,
+              });
+            },
+          });
+
+          return;
+        }
+
+        const trustPolicy = trustPolicyMatch[1];
+        if (trustPolicy !== "no-downgrade") {
+          await addIssue(ctx, {
+            priority: 3,
+            title: "Pnpm workspace has wrong trustPolicy",
+
+            description: `Node.js projects should set trustPolicy to "no-downgrade". The current setting is "${trustPolicy}"" minutes.`,
+
+            remediation: `Set trustPolicy in the \`pnpm-workspace.yaml\` file to "no-downgrade".`,
+
+            proposeResolution: async (ctx, issue) => {
+              await proposeTextFileResolution(ctx, issue, {
+                branchName: `turma/${issue.rule.id}-set-trust-policy`,
+
+                filePath: "pnpm-workspace.yaml",
+                content: contents.replace(/trustPolicy:\s*\d+/, "trustPolicy: 12960"),
+              });
+            },
+          });
+        }
+      })(),
+    ]);
   },
 };
 
