@@ -4,3 +4,6 @@ packages:
 
 trustPolicy: no-downgrade
 minimumReleaseAge: 21600
+minimumReleaseAgeExclude:
+  # Renovate security update: next@16.1.7
+  - next@16.1.7
