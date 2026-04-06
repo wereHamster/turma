@@ -21,7 +21,7 @@ importers:
         specifier: ^16.1.2
         version: 16.1.2
       '@octokit/core':
-        specifier: ^7.0.2
+        specifier: ^7.0.6
         version: 7.0.6
       '@types/node':
         specifier: ^24.0.0
