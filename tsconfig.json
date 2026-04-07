@@ -5,6 +5,7 @@
     "moduleResolution": "node16",
     "skipLibCheck": true,
     "rootDir": "src",
+    "strict": true,
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"]

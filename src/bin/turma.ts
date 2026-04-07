@@ -50,7 +50,7 @@ for await (const { installation } of app.eachInstallation.iterator()) {
     await Promise.all(
       allRules.map(async (rule) => {
         try {
-          await rule.fn({ octokit, repository, issues, rule });
+          await rule.fn?.({ octokit, repository, issues, rule });
         } catch (error) {
           console.error(`Error evaluating rule ${rule.id} for ${repository.owner.login}/${repository.name}`);
           console.error(error);

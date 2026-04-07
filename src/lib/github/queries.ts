@@ -14,7 +14,7 @@ export async function fileExists(ctx: Context, path: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error) {
+  } catch (error: any) {
     if (error.status === 404) {
       return false;
     }
