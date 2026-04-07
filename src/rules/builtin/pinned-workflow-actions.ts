@@ -24,7 +24,7 @@ const rule: Rule = {
           path: ".github/workflows",
         });
         return data;
-      } catch (error) {
+      } catch (error: any) {
         if (error.status === 404) {
           return [];
         }
