@@ -3,7 +3,7 @@
     "@types/react": "19.2.14",
     "@biscuit-auth/biscuit-wasm": "^0.6.0",
     "@vercel/functions": "^3.3.4",
-    "next": "^16.0.10",
+    "next": "^16.2.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "rehype-react": "^8.0.0",
