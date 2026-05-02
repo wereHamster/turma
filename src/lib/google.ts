@@ -13,4 +13,4 @@ const firestore = new Firestore({
   databaseId: "default",
 });
 
-export { auth, project, parameterManagerClient, firestore };
+export { auth, firestore, parameterManagerClient, project };
