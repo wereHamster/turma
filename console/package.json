@@ -9,7 +9,7 @@
     "rehype-react": "^8.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "unified": "^11.0.5"
   }
 }
