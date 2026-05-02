@@ -10,6 +10,6 @@
     "@types/node": "^24.12.2",
     "ansis": "^4.2.0",
     "google-auth-library": "^10.6.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   }
 }
