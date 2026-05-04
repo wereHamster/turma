@@ -15,8 +15,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1
       '@google/genai':
-        specifier: ^1.49.0
-        version: 1.49.0
+        specifier: ^1.50.1
+        version: 1.50.1
       '@octokit/app':
         specifier: ^16.1.2
         version: 16.1.2
@@ -89,8 +89,8 @@ packages:
     resolution: {integrity: sha512-JAcK7JyqrXpOcVT5dhVFCkzfA0IIyKJaUhV5ZyXfUotKrXMeHeO6nG8Zsx+idvAq2Rg+9RMmBrNLRljdVsoffw==}
     engines: {node: '>=18'}
 
-  '@google/genai@1.49.0':
-    resolution: {integrity: sha512-hO69Zl0H3x+L0KL4stl1pLYgnqnwHoLqtKy6MRlNnW8TAxjqMdOUVafomKd4z1BePkzoxJWbYILny9a2Zk43VQ==}
+  '@google/genai@1.50.1':
+    resolution: {integrity: sha512-YbkX7H9+1Pt8wOt7DDREy8XSoiL6fRDzZQRyaVBarFf8MR3zHGqVdvM4cLbDXqPhxqvegZShgfxb8kw9C7YhAQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.25.2
@@ -1193,7 +1193,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@google/genai@1.49.0':
+  '@google/genai@1.50.1':
     dependencies:
       google-auth-library: 10.6.2
       p-retry: 4.6.2
