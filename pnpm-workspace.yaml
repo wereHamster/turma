@@ -2,5 +2,8 @@ packages:
   - "."
   - "console"
 
-trustPolicy: no-downgrade
+allowBuilds:
+  protobufjs: false
+  sharp: false
+
 minimumReleaseAge: 21600
