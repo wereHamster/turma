@@ -2,5 +2,4 @@ packages:
   - "."
   - "console"
 
-trustPolicy: no-downgrade
 minimumReleaseAge: 21600
