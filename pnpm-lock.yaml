@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@google-cloud/firestore':
-        specifier: ^8.5.0
-        version: 8.5.0
+        specifier: ^8.6.0
+        version: 8.6.0
       '@google-cloud/parametermanager':
         specifier: ^0.5.2
         version: 0.5.2
@@ -81,8 +81,8 @@ packages:
   '@emnapi/runtime@1.10.0':
     resolution: {integrity: sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA==}
 
-  '@google-cloud/firestore@8.5.0':
-    resolution: {integrity: sha512-1sbtj7JQfsfekrxwHR0s2CAz8+hkpBdiuB7+20VEgI4EWvW3+GhEUqYOQPRoZ2spHyITLN4gaOPmBN17J539yQ==}
+  '@google-cloud/firestore@8.6.0':
+    resolution: {integrity: sha512-TdvZHfwQj5B5CSDEgDqyrhdVqtOSupmBXDQPasMAJiC64tjsGvyMooNiC43fdk1TsUHeklyoZ6/vQ1TjWKVMbg==}
     engines: {node: '>=18'}
 
   '@google-cloud/parametermanager@0.5.2':
@@ -1178,7 +1178,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@google-cloud/firestore@8.5.0':
+  '@google-cloud/firestore@8.6.0':
     dependencies:
       '@opentelemetry/api': 1.9.1
       fast-deep-equal: 3.1.3
