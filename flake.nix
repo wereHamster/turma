@@ -7,33 +7,40 @@
     nix-develop.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, systems, nix-develop, ... }: let
-    forAllSystems = function:
-      nixpkgs.lib.genAttrs (import systems) (
-        system: function nixpkgs.legacyPackages.${system}
-      );
-  in {
-    packages = forAllSystems (pkgs: {
-      nix-develop = nix-develop.packages.${pkgs.stdenv.system}.default;
-    });
+  outputs =
+    {
+      nixpkgs,
+      systems,
+      nix-develop,
+      ...
+    }:
+    let
+      forAllSystems =
+        function: nixpkgs.lib.genAttrs (import systems) (system: function nixpkgs.legacyPackages.${system});
 
-    devShells = forAllSystems (pkgs: {
-      default = pkgs.mkShell {
-        nativeBuildInputs = [
-          pkgs.google-cloud-sdk
-          pkgs.nodejs
-          pkgs.pnpm
-          pkgs.biome
-        ];
-      };
+    in
+    {
+      packages = forAllSystems (pkgs: {
+        nix-develop = nix-develop.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      });
 
-      workflow = pkgs.mkShell {
-        nativeBuildInputs = [
-          pkgs.nodejs
-          pkgs.pnpm
-          pkgs.biome
-        ];
-      };
-    });
-  };
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          nativeBuildInputs = [
+            pkgs.google-cloud-sdk
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
+          ];
+        };
+
+        workflow = pkgs.mkShell {
+          nativeBuildInputs = [
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
+          ];
+        };
+      });
+    };
 }
