@@ -30,8 +30,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       google-auth-library:
-        specifier: ^10.9.1
-        version: 10.9.1
+        specifier: ^11.0.2
+        version: 11.0.2
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -852,8 +852,8 @@ packages:
     resolution: {integrity: sha512-i1ydyHrqcIxXkWh/uBmVkzCvIuq5yiK2ATndIe5XxKholrG/MTYP9xGYka4sQhrbIAgGjL2B6NOE7rFaiF3fXw==}
     engines: {node: '>=18'}
 
-  google-auth-library@11.0.1:
-    resolution: {integrity: sha512-ZqfaYduu9ASUaFuUk5dF9g9QvufdhhSj7jFiEnCrTQcH57sFPKYetM0iU4dcKkQk6CqC1xpSrVr5uQ9NhqjNOg==}
+  google-auth-library@11.0.2:
+    resolution: {integrity: sha512-vzpgPutxrghPsnjrjpzLX2bdv8IOL719Rh0oEjGnQu8YCIbnbMuTTQ5zU9LcKvLdOPgCxBwppbvnhgW90Qna5Q==}
     engines: {node: '>=22'}
 
   google-gax@5.0.8:
@@ -2106,7 +2106,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  google-auth-library@11.0.1:
+  google-auth-library@11.0.2:
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
@@ -2138,7 +2138,7 @@ snapshots:
       '@grpc/grpc-js': 1.14.4
       '@grpc/proto-loader': 0.8.1
       duplexify: 4.1.3
-      google-auth-library: 11.0.1
+      google-auth-library: 11.0.2
       google-logging-utils: 2.0.1
       node-fetch: 3.3.2
       object-hash: 3.0.0
