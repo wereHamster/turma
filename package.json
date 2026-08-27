@@ -9,7 +9,7 @@
     "@octokit/core": "^7.0.7",
     "@types/node": "^24.13.3",
     "ansis": "^4.3.1",
-    "google-auth-library": "^10.9.1",
+    "google-auth-library": "^11.0.2",
     "typescript": "^7.0.2"
   }
 }
