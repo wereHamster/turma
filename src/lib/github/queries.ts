@@ -1,3 +1,4 @@
+import { RequestError } from "@octokit/request-error";
 import type { Context } from "../engine.js";
 
 /**
@@ -14,8 +15,8 @@ export async function fileExists(ctx: Context, path: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error: any) {
-    if (error.status === 404) {
+  } catch (error) {
+    if (error instanceof RequestError && error.status === 404) {
       return false;
     }
 

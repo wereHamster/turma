@@ -1,3 +1,4 @@
+import { RequestError } from "@octokit/request-error";
 import type { Context, Issue } from "../engine.js";
 
 /**
@@ -6,7 +7,11 @@ import type { Context, Issue } from "../engine.js";
  * This works well for issues where the file can be initialized with reasonable defaults
  * (for example .github/CODEOWNERS).
  */
-export async function proposeTextFileResolution(ctx: Context, issue: Issue, { branchName, filePath, content }: any) {
+export async function proposeTextFileResolution(
+  ctx: Context,
+  issue: Issue,
+  { branchName, filePath, content }: { branchName: string; filePath: string; content: string },
+) {
   const { octokit, repository } = ctx;
 
   const { data: repoInfo } = await octokit.request("GET /repos/{owner}/{repo}", {
@@ -29,8 +34,8 @@ export async function proposeTextFileResolution(ctx: Context, issue: Issue, { br
       ref: `refs/heads/${branchName}`,
       sha: latestCommitSha,
     });
-  } catch (error: any) {
-    if (error.status !== 422) {
+  } catch (error) {
+    if (!(error instanceof RequestError) || error.status !== 422) {
       throw error;
     }
   }
@@ -49,8 +54,8 @@ export async function proposeTextFileResolution(ctx: Context, issue: Issue, { br
     }
 
     fileSha = file.sha;
-  } catch (error: any) {
-    if (error.status !== 404) {
+  } catch (error) {
+    if (!(error instanceof RequestError) || error.status !== 404) {
       throw error;
     }
   }

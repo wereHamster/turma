@@ -1,3 +1,4 @@
+import { RequestError } from "@octokit/request-error";
 import { addIssue, type Context, type Rule } from "../../lib/engine.js";
 import { readTextFile } from "../../lib/github/queries.js";
 
@@ -24,8 +25,8 @@ const rule: Rule = {
           path: ".github/workflows",
         });
         return data;
-      } catch (error: any) {
-        if (error.status === 404) {
+      } catch (error) {
+        if (error instanceof RequestError && error.status === 404) {
           return [];
         }
 
@@ -50,7 +51,7 @@ const rule: Rule = {
           if (usesMatch) {
             const comment = usesMatch[2];
 
-            if (!comment || !comment.trim().startsWith("#")) {
+            if (!comment?.trim().startsWith("#")) {
               workflowsWithUnpinnedActions.add(file.name);
               return;
             }
