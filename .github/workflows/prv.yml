@@ -34,7 +34,7 @@ jobs:
       - run: nix run .#nix-develop .#workflow
       - run: pnpm install
 
-      - run: biome check --reporter=github
+      - run: biome ci
 
   typescript:
     if: github.event.pull_request.draft == false
