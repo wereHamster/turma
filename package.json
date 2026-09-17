@@ -4,7 +4,7 @@
   "dependencies": {
     "@google-cloud/firestore": "^9.0.0",
     "@google-cloud/parametermanager": "^0.6.0",
-    "@google/genai": "^2.10.0",
+    "@google/genai": "^2.20.0",
     "@octokit/app": "^16.1.4",
     "@octokit/core": "^7.0.8",
     "@octokit/request-error": "^7.1.2",
