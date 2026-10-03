@@ -2,7 +2,7 @@
   "dependencies": {
     "@types/react": "19.3.0",
     "@biscuit-auth/biscuit-wasm": "^0.6.0",
-    "@vercel/functions": "^3.9.7",
+    "@vercel/functions": "^3.9.8",
     "next": "^16.3.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
