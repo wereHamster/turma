@@ -12,8 +12,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       '@google-cloud/parametermanager':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.7.0
+        version: 0.7.0
       '@google/genai':
         specifier: ^2.20.0
         version: 2.21.0
@@ -92,8 +92,8 @@ packages:
     resolution: {integrity: sha512-4BI2686ygMkef0Pe4QnX9hnWeGCUjaAP5m+Ow5/yNWwGxGadO741Ct28MRXW9czg0pnvz919INKbQdCgUMcfeA==}
     engines: {node: '>=22'}
 
-  '@google-cloud/parametermanager@0.6.0':
-    resolution: {integrity: sha512-3WpqkdiOgkvJKKBy+xO7M2lIrzF2S+MU4cLdmG3Unnp7NskyeVrhe8t308k2r1C8lG6lizg44gLgwj4RhHjfdA==}
+  '@google-cloud/parametermanager@0.7.0':
+    resolution: {integrity: sha512-DKj6Oo8dOoSltoc8QZHulujULn7pHyYzAwlk5mPzokxl/lKRr6WeXgsI/ABq2un+275Zhhn0PvlEajn++UHIig==}
     engines: {node: '>=22'}
 
   '@google/genai@2.21.0':
@@ -1449,7 +1449,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@google-cloud/parametermanager@0.6.0':
+  '@google-cloud/parametermanager@0.7.0':
     dependencies:
       google-gax: 6.4.0
     transitivePeerDependencies:
