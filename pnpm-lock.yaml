@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@google-cloud/firestore':
-        specifier: ^9.2.0
-        version: 9.2.0
+        specifier: ^9.3.1
+        version: 9.3.1
       '@google-cloud/parametermanager':
         specifier: ^0.7.0
         version: 0.7.0
@@ -88,8 +88,8 @@ packages:
     resolution: {integrity: sha512-wfHJPZmLqzpy6FN6U+7HkkP/AKhGsbHSpEy/qL2TyI3/pKRAvpamQxZ2qvps5hMRgAjfuHCim+oeJj9RveCaqg==}
     engines: {node: '>=18'}
 
-  '@google-cloud/firestore@9.2.0':
-    resolution: {integrity: sha512-4BI2686ygMkef0Pe4QnX9hnWeGCUjaAP5m+Ow5/yNWwGxGadO741Ct28MRXW9czg0pnvz919INKbQdCgUMcfeA==}
+  '@google-cloud/firestore@9.3.1':
+    resolution: {integrity: sha512-ofGTiSpfXrHrrS3KaDOmsupSzCHr4WVl1+s6Ke0F8rPBRyb/OuZSC8u1NjCKtt/fO7A1GvqASQGhdAwVsnGpQA==}
     engines: {node: '>=22'}
 
   '@google-cloud/parametermanager@0.7.0':
@@ -1441,7 +1441,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@google-cloud/firestore@9.2.0':
+  '@google-cloud/firestore@9.3.1':
     dependencies:
       '@google-cloud/firestore-api': 0.2.0
       '@opentelemetry/api': 1.9.1
