@@ -10,7 +10,7 @@
     "@octokit/request-error": "^7.1.2",
     "@types/node": "^24.19.2",
     "ansis": "^4.4.0",
-    "google-auth-library": "^11.1.0",
+    "google-auth-library": "^11.2.0",
     "typescript": "^7.0.2"
   }
 }
